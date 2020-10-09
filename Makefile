@@ -1,5 +1,10 @@
 #!/usr/bin/env make
 
+all: final.html final.pdf
+
+final.pdf: final.txt ViEWSMapGridCell.png
+	pandoc final.txt --pdf-engine=xelatex --mathjax -s -o final.pdf
+
 final.html:final.txt ViEWSMapGridCell.png 
 	pandoc final.txt -s --mathjax -f markdown+tex_math_double_backslash  --toc  -o final.html
 
